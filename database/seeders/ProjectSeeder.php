@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Project;
 
 class ProjectSeeder extends Seeder
 {
@@ -86,7 +87,7 @@ class ProjectSeeder extends Seeder
         ];
 
         foreach ($projects as $project) {
-            \App\Models\Project::create($project);
+            Project::create($project);
         }
     }
 }

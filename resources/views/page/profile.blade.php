@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('title', 'profile')
+
 @section('content')
     <div class="container flex-grow-1">
         <div class="row justify-content-center">
@@ -8,9 +9,9 @@
                 <div class="card shadow-sm border-0">
                     <div class="card-header bg-white text-center py-4">
                         <div class="d-flex justify-content-center mb-3">
-                            <!-- Memanggil foto profil dari folder public -->
-                            <img src="{{ asset('pp1porto.jpg') }}" alt="Foto Profil" class="rounded-circle img-thumbnail"
-                                style="width: 120px; height: 120px; object-fit: cover;">
+                            <!-- Ubah width dan height sesuai keinginan, misal 150px -->
+                            <img src="{{ asset('images/pp1porto.jpeg') }}" alt="Foto Profil" class="rounded-circle img-thumbnail"
+                                style="width: 150px; height: 150px; object-fit: cover;">
                         </div>
                         <h5 class="card-title mb-4">Profile Mahasiswa</h5>
                         <span class="badge bg-success">{{ $mahasiswa['status'] }}</span>

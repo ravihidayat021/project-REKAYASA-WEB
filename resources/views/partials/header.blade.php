@@ -25,6 +25,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('/project') }}">Project</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('admin.dashboard') }}">Admin</a>
+                </li>
             </ul>
         </div>
     </div>

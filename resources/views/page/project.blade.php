@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title','project')
+@section('title','Project')
 
 @section('content')
 <div class="container flex-grow-1">
@@ -18,7 +18,15 @@
                     style="height: 200px; object-fit: cover;">
                 <div class="card-body">
                     <h5 class="card-title mb-4">{{ $project->title }}</h5>
-                    <span class="badge bg-success">{{ $project->status }}</span>
+                    <div class="mb-3">
+                        @if (strtolower($project->status) === 'active')
+                        <span class="badge bg-success">Active</span>
+                        @elseif (strtolower($project->status) === 'archived')
+                        <span class="badge bg-secondary">Archived</span>
+                        @else
+                        <span class="badge bg-secondary">{{ $project->status }}</span>
+                        @endif
+                    </div>
                     <p class="card-text">{{ Str::limit($project->description,50) }}</p>
                 </div>
                 <div class="card-footer bg-white border-0 pb-3">

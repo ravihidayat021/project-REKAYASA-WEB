@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Project;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 
 class AdminProjectController extends Controller
@@ -21,12 +22,12 @@ class AdminProjectController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-    'title'       => 'required|string|max:255',
-    'teknologi'   => 'required|string|max:255',
-    'status'      => 'required|in:active,archived',
-    'description' => 'nullable|string',
-    'image'       => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // tambahkan nullable
-]);
+            'title' => 'required',
+            'description' => 'required',
+            'teknologi' => 'required',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'status' => 'required',
+        ]);
 
         $imagePath = null;
 
@@ -96,5 +97,13 @@ class AdminProjectController extends Controller
         $project->delete();
 
         return redirect()->route('projects.index')->with('success', 'Project deleted successfully.');
+    }
+
+    public function cetakPDF()
+    {
+        $projects = Project::all();
+        $pdf = Pdf::loadView('admin.projects.pdf', compact('projects'));
+        
+        return $pdf->stream('projects.pdf');
     }
 }
